@@ -4,7 +4,7 @@ import '../style/Home.css'
 
 class SAU extends React.Component {
     render() {
-        if(this.props.repeat == 1 || this.props.repeat == 0) {
+        if(this.props.repeat == 1) {
             return(
                 <div>    
                     <h3>First SAU score:  <input onChange={event => this.props.setSau1Cur(event.target.value)} maxLength="2"/> / 
@@ -32,6 +32,11 @@ class SAU extends React.Component {
                     <h3>Third SAU score:  <input onChange={event => this.props.setSau3Cur(event.target.value)} maxLength="2"/> / 
                     <input onChange={event => this.props.setSau3Max(event.target.value)} maxLength="2"/></h3>
                 </div>
+            )
+        }
+        else if(this.props.repeat == 0) {
+            return(
+                null
             )
         }
         else {
