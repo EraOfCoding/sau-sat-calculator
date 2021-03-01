@@ -1,3 +1,9 @@
+# About project
+
+This is simple SAU SAT Calculator. It is very simple but it took me a lot of time create this project. I had a lot of issues and learned plenty of things!
+
+https://sau-sat-calculator.netlify.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
