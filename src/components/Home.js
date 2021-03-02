@@ -60,35 +60,33 @@ class SAT extends React.Component {
 }
 
 class Result extends React.Component {
+    result = 0
+    error = false
     render() {
         if(this.props.sau_sat.checked === true) {
-            return(
-                <h1>
-                    {( ( ( ( (this.props.sau_sat.sau1cur / this.props.sau_sat.sau1max) + 
-                    (this.props.sau_sat.sau2cur / this.props.sau_sat.sau2max) + 
-                    (this.props.sau_sat.sau3cur / this.props.sau_sat.sau3max) ) / this.props.sau_sat.sauNum ) + (this.props.sau_sat.sat_cur / this.props.sau_sat.sat_max) ) / 2) * 100}%
-                    {console.log(this.props.sau_sat.sau1cur / this.props.sau_sat.sau1max)}
-                    {console.log(this.props.sau_sat.sau2cur / this.props.sau_sat.sau2max)}
-                    {console.log(this.props.sau_sat.sau3cur / this.props.sau_sat.sau3max)}
-                    {console.log(this.props.sau_sat.sat_cur / this.props.sau_sat.sat_max)}
-                    {console.log(this.props.sau_sat.sauNum)}
-                </h1>
-            )
+            this.result = 
+                ( ( ( ( (this.props.sau_sat.sau1cur / this.props.sau_sat.sau1max) + 
+                (this.props.sau_sat.sau2cur / this.props.sau_sat.sau2max) + 
+                (this.props.sau_sat.sau3cur / this.props.sau_sat.sau3max) ) / this.props.sau_sat.sauNum ) + (this.props.sau_sat.sat_cur / this.props.sau_sat.sat_max) ) / 2) * 100;
+            this.error = false
         }
         else {
-            return(
-                <h1>
-                    {( ( (this.props.sau_sat.sau1cur / this.props.sau_sat.sau1max) + 
-                    (this.props.sau_sat.sau2cur / this.props.sau_sat.sau2max) + 
-                    (this.props.sau_sat.sau3cur / this.props.sau_sat.sau3max) ) / this.props.sau_sat.sauNum )* 100}%
-                    {console.log(this.props.sau_sat.sau1cur / this.props.sau_sat.sau1max)}
-                    {console.log(this.props.sau_sat.sau2cur / this.props.sau_sat.sau2max)}
-                    {console.log(this.props.sau_sat.sau3cur / this.props.sau_sat.sau3max)}
-                    {console.log(this.props.sau_sat.sat_cur / this.props.sau_sat.sat_max)}
-                    {console.log(this.props.sau_sat.sauNum)}
-                </h1>
-            )
+            this.result = 
+                ( ( (this.props.sau_sat.sau1cur / this.props.sau_sat.sau1max) + 
+                (this.props.sau_sat.sau2cur / this.props.sau_sat.sau2max) + 
+                (this.props.sau_sat.sau3cur / this.props.sau_sat.sau3max) ) / this.props.sau_sat.sauNum )* 100;
+            this.error = false    
         }
+
+        if(this.result > 100) {
+            this.error = true
+            this.result = null
+        }
+        return(
+            <h1>
+                {this.error === true ? "" : "Result: "}{Math.round(this.result)}%
+            </h1>
+        )
     }
 }
 
@@ -105,7 +103,7 @@ class Home extends React.Component {
             sau3max: 1,
             sat_cur: 0,
             sat_max: 1,
-            checked: true,
+            checked: false,
         }
     }
 
