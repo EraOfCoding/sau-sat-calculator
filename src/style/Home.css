@@ -65,10 +65,10 @@
   transition: 10ms;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 700px) {
   .home {
     height: auto;
-    padding: 0vh 3vw 5vh 3vw;
+    padding: 0vh 3vw 7vh 3vw;
   }
   .mini-navbar {
     padding: 0vh 0vw 25vh 0vw;
