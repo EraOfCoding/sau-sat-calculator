@@ -64,10 +64,9 @@ class Result extends React.Component {
     error = false
     render() {
         if(this.props.sau_sat.checked === true) {
-            this.result = 
-                ( ( ( ( (this.props.sau_sat.sau1cur / this.props.sau_sat.sau1max) + 
-                (this.props.sau_sat.sau2cur / this.props.sau_sat.sau2max) + 
-                (this.props.sau_sat.sau3cur / this.props.sau_sat.sau3max) ) / this.props.sau_sat.sauNum ) + (this.props.sau_sat.sat_cur / this.props.sau_sat.sat_max) ) / 2) * 100;
+            this.result = ( ( ( (this.props.sau_sat.sau1cur + this.props.sau_sat.sau2cur + this.props.sau_sat.sau3cur) / 
+                (this.props.sau_sat.sau1max + this.props.sau_sat.sau2max + this.props.sau_sat.sau3max) ) + 
+                (this.props.sau_sat.sat_cur / this.props.sau_sat.sat_max) ) / 2 ) * 100
             this.error = false
         }
         else {
@@ -84,7 +83,7 @@ class Result extends React.Component {
         }
         return(
             <h1>
-                {this.error === true ? "" : "Result: "}{Math.round(this.result)}%
+                {this.error === true ? "" : "Result: "}{this.result}%
             </h1>
         )
     }
