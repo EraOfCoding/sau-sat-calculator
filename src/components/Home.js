@@ -64,16 +64,14 @@ class Result extends React.Component {
     error = false
     render() {
         if(this.props.sau_sat.checked === true) {
-            this.result = ( ( ( (this.props.sau_sat.sau1cur + this.props.sau_sat.sau2cur + this.props.sau_sat.sau3cur) / 
-                (this.props.sau_sat.sau1max + this.props.sau_sat.sau2max + this.props.sau_sat.sau3max) ) + 
-                (this.props.sau_sat.sat_cur / this.props.sau_sat.sat_max) ) / 2 ) * 100
+            this.result = ( ( (parseFloat(this.props.sau_sat.sau1cur) + parseFloat(this.props.sau_sat.sau2cur) + parseFloat(this.props.sau_sat.sau3cur)) / 
+                (parseFloat(this.props.sau_sat.sau1max) + parseFloat(this.props.sau_sat.sau2max) + parseFloat(this.props.sau_sat.sau3max)) ) / 2 + 
+                (parseFloat(this.props.sau_sat.sat_cur) / parseFloat(this.props.sau_sat.sat_max)) / 2 ) * 100
             this.error = false
         }
         else {
-            this.result = 
-                ( ( (this.props.sau_sat.sau1cur / this.props.sau_sat.sau1max) + 
-                (this.props.sau_sat.sau2cur / this.props.sau_sat.sau2max) + 
-                (this.props.sau_sat.sau3cur / this.props.sau_sat.sau3max) ) / this.props.sau_sat.sauNum )* 100;
+            this.result = ( parseFloat(this.props.sau_sat.sau1cur) + parseFloat(this.props.sau_sat.sau2cur) + parseFloat(this.props.sau_sat.sau3cur) ) / 
+            ( parseFloat(this.props.sau_sat.sau1max) + parseFloat(this.props.sau_sat.sau2max) + parseFloat(this.props.sau_sat.sau3max) ) * 100
             this.error = false    
         }
 
@@ -81,9 +79,10 @@ class Result extends React.Component {
             this.error = true
             this.result = null
         }
-        return(
+        return(   
             <h1>
-                {this.error === true ? "" : "Result: "}{this.result}%
+                {this.error === true ? "" : "Result: "}
+                {Math.round(this.result * 100) / 100 + '%'}
             </h1>
         )
     }
